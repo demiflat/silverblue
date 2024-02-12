@@ -50,7 +50,7 @@ jobs:
       #     remove-dotnet: 'true'
       #     remove-haskell: 'true'
               
-      - uses: actions/delete-package-versions@v4
+      - uses: actions/delete-package-versions@v5
         with: 
           package-name: 'silverblue'
           package-type: 'container'
