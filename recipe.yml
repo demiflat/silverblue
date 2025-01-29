@@ -6,6 +6,8 @@ name: silverblue
 # The native container image to build on top of
 # Warning: Non-uBlue images might function unexpectly
 #base-image: ghcr.io/ublue-os/silverblue-nvidia
+#base-image: ghcr.io/ublue-os/silverblue-main
+#base-image: ghcr.io/ublue-os/silverblue-main
 base-image: ghcr.io/ublue-os/silverblue-main
 # What fedora version to use. Use an explicit version or `latest`.
 # If you use `latest`, you will be automatically updated
@@ -18,12 +20,12 @@ description: desktop os as i like it
 # Place scripts in scripts/ and put the corresponding filename here
 scripts:
   #  - librewolf.sh
+  - ghostty.sh
   - mullvad.sh
-  # - mullvad-install.sh
-  - vscodium.sh
-  - vscodium-install.sh
-  - vscodium-patch.sh
   - wezterm.sh
+  - vscodium.sh
+  - vscodium-install.sh # install here because we need to patch
+  - vscodium-patch.sh
 # a list of urls of .repo files that should be added to your system
 # this is the proper way to add copr repos to your image
 extrarepos:
@@ -31,6 +33,11 @@ extrarepos:
 # These rpms will be installed from the fedora repository
 # using rpm-ostree and will be preinstalled in the final image
 rpms:
+  # from repos installed in scripts
+  - ghostty
+  - mullvad
+  - wezterm
+  #####
   # - alacritty
   - aria2
   # - chromium
@@ -40,9 +47,9 @@ rpms:
   # - clang-tools-extra
   # - clang-tools-extra-devel
   # - clipman
-  - cmake
+  # - cmake
   # - debootstrap
-  - emacs
+  # - emacs
   - et
   - diffuse
   - dmenu
@@ -58,7 +65,7 @@ rpms:
   - gh
   - gitk
   - git-delta
-  - gnumeric
+  # - gnumeric
   - golang
   - grub-customizer
   - gstreamer1-plugin-libav
@@ -68,9 +75,9 @@ rpms:
   - gstreamer1-plugins-good-extras
   - gstreamer1-plugins-good-gtk
   - gstreamer1-plugins-ugly
-  - gstreamer1-rtsp-server
-  - gstreamer1-svt-av1
-  - gstreamer1-svt-vp9
+  # - gstreamer1-rtsp-server
+  # - gstreamer1-svt-av1
+  # - gstreamer1-svt-vp9
   - gstreamer1-vaapi
   - gron
   - helvum
@@ -128,14 +135,14 @@ rpms:
   - sway
   - task
   - terminator
-  # - tlp
-  # - tlp-rdw
+  - tlp
+  - tlp-rdw
   - tmux
   - transmission
   - tumbler
   - unzip
   # - vdpauinfo
-  - vim-enhanced
+  #- vim-enhanced
   - virt-install
   - virt-manager
   - virt-viewer
@@ -146,13 +153,13 @@ rpms:
   # - vlc-extras
   - wireguard-tools
   - w3m
-  # - waybar
+  - waybar
   # - waydroid
   # - waydroid-selinux
-  # - wdisplays
-  # - wlsunset
-  # - wofi
-  # - wshowkeys
+  - wdisplays
+  - wlsunset
+  - wofi
+  - wshowkeys
   - xq
   - zip
   - zstd
