@@ -13,7 +13,7 @@ base-image: ghcr.io/ublue-os/silverblue-main
 # If you use `latest`, you will be automatically updated
 # to the next major version assuming the image you're using as your base container
 # builds with the tag (all uBlue images do this).
-fedora-version: 41
+fedora-version: 42
 # This description will be visible in the container metadata
 description: desktop os as i like it
 # These scripts will be executed during the container build
