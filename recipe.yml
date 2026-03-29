@@ -13,7 +13,7 @@ base-image: ghcr.io/ublue-os/silverblue-main
 # If you use `latest`, you will be automatically updated
 # to the next major version assuming the image you're using as your base container
 # builds with the tag (all uBlue images do this).
-fedora-version: 42
+fedora-version: stable
 # This description will be visible in the container metadata
 description: desktop os as i like it
 # These scripts will be executed during the container build
@@ -29,8 +29,8 @@ scripts:
 # a list of urls of .repo files that should be added to your system
 # this is the proper way to add copr repos to your image
 extrarepos:
-  - https://copr.fedorainfracloud.org/coprs/pgdev/ghostty/repo/fedora-41/pgdev-ghostty-fedora-41.repo 
-  - https://copr.fedorainfracloud.org/coprs/wezfurlong/wezterm-nightly/repo/fedora-41/wezfurlong-wezterm-nightly-fedora-41.repo
+  - https://copr.fedorainfracloud.org/coprs/pgdev/ghostty/repo/fedora-42/pgdev-ghostty-fedora-42.repo
+  - https://copr.fedorainfracloud.org/coprs/wezfurlong/wezterm-nightly/repo/fedora-42/wezfurlong-wezterm-nightly-fedora-42.repo
   - https://repository.mullvad.net/rpm/stable/mullvad.repo
   #  - https://rpm.librewolf.net/librewolf-repo.repo
 # These rpms will be installed from the fedora repository
