@@ -8,7 +8,7 @@ name: silverblue
 #base-image: ghcr.io/ublue-os/silverblue-nvidia
 #base-image: ghcr.io/ublue-os/silverblue-main
 #base-image: ghcr.io/ublue-os/silverblue-main
-base-image: ghcr.io/ublue-os/silverblue-main
+base-image: ghcr.io/ublue-os/bluefin
 # What fedora version to use. Use an explicit version or `latest`.
 # If you use `latest`, you will be automatically updated
 # to the next major version assuming the image you're using as your base container
