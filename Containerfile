@@ -1,7 +1,6 @@
-ARG FEDORA_MAJOR_VERSION=39
-ARG BASE_IMAGE_URL=ghcr.io/ublue-os/silverblue-nvidia
+ARG IMAGE_URL=ghcr.io/ublue-os/bluefin:stable
 
-FROM ${BASE_IMAGE_URL}:${FEDORA_MAJOR_VERSION}
+FROM ${IMAGE_URL}
 ARG RECIPE=recipe.yml
 
 # copy over configuration files
