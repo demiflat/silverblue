@@ -26,6 +26,10 @@ COPY --from=docker.io/mikefarah/yq /usr/bin/yq /usr/bin/yq
 COPY build.sh /tmp/build.sh
 RUN chmod +x /tmp/build.sh && /tmp/build.sh
 
+RUN mkdir -p /nix
+
+RUN mkdir -p /development
+
 # clean up and finalize container build
 RUN rm -rf \
         /tmp/* \

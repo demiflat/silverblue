@@ -27,7 +27,7 @@ env:
 jobs:
   push-ghcr:
     name: build
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     permissions:
       contents: read
       packages: write
@@ -40,7 +40,7 @@ jobs:
 
     steps:
       - name: Maximize build space
-        uses: ublue-os/remove-unwanted-software@v9
+        uses: ublue-os/remove-unwanted-software@v10
 
       - uses: actions/delete-package-versions@v5
         with:
@@ -104,7 +104,7 @@ jobs:
 
       # Build metadata
       - name: Image Metadata
-        uses: docker/metadata-action@v6
+        uses: docker/metadata-action@v6.1.0
         id: meta
         with:
           images: |
