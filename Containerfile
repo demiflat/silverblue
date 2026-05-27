@@ -4,7 +4,8 @@ ARG IMAGE_REGISTRY=ghcr.io/ublue-os
 FROM ${IMAGE_URL}
 ARG RECIPE=recipe.yml
 
-FROM ${IMAGE_REGISTRY}/akmods:main-${FEDORA_MAJOR_VERSION}${AKMODS_DIGEST:+@${AKMODS_DIGEST}} AS akmods
+ARG AKMODS_URL=ghcr.io/ublue-os/akmods:latest
+FROM ${AKMODS_URL} AS akmods
 
 # copy over configuration files
 # etc is copied to /usr/etc/ to prevent "merge conflicts"
@@ -27,7 +28,9 @@ COPY --from=docker.io/mikefarah/yq /usr/bin/yq /usr/bin/yq
 
 # copy and run the build script
 COPY build.sh /tmp/build.sh
-RUN chmod +x /tmp/build.sh && /tmp/build.sh
+RUN --mount=type=bind,from=akmods,src=/rpms/ublue-os,dst=/tmp/akmods-rpms \
+    --mount=type=bind,from=akmods,src=/kernel-rpms,dst=/tmp/kernel-rpms \
+    chmod +x /tmp/build.sh && /tmp/build.sh
 
 RUN mkdir -p /nix
 
