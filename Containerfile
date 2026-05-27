@@ -1,11 +1,10 @@
 ARG IMAGE_URL=ghcr.io/ublue-os/bluefin:stable
 ARG IMAGE_REGISTRY=ghcr.io/ublue-os
+ARG AKMODS_URL=ghcr.io/ublue-os/akmods:latest
+FROM ${AKMODS_URL} AS akmods
 
 FROM ${IMAGE_URL}
 ARG RECIPE=recipe.yml
-
-ARG AKMODS_URL=ghcr.io/ublue-os/akmods:latest
-FROM ${AKMODS_URL} AS akmods
 
 # copy over configuration files
 # etc is copied to /usr/etc/ to prevent "merge conflicts"
