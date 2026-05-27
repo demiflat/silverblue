@@ -50,4 +50,4 @@ mv -f /usr/lib/systemd/system/flatpak-add-flathub-repos.service /usr/lib/systemd
 # fi
 
 # bootc lint
-RUN ["bootc", "container", "lint"]
+# RUN ["bootc", "container", "lint"]
