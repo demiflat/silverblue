@@ -1,7 +1,6 @@
 ARG IMAGE_URL=ghcr.io/ublue-os/bluefin:stable
 ARG IMAGE_REGISTRY=ghcr.io/ublue-os
-ARG AKMODS_URL=ghcr.io/ublue-os/akmods:latest
-FROM ${AKMODS_URL} AS akmods
+ARG AKMODS_URL=ghcr.io/ublue-os/akmods-nvidia-lts:main-44
 
 FROM ${IMAGE_URL}
 ARG RECIPE=recipe.yml
@@ -27,9 +26,15 @@ COPY --from=docker.io/mikefarah/yq /usr/bin/yq /usr/bin/yq
 
 # copy and run the build script
 COPY build.sh /tmp/build.sh
-RUN --mount=type=bind,from=akmods,src=/rpms/ublue-os,dst=/tmp/akmods-rpms \
-    --mount=type=bind,from=akmods,src=/kernel-rpms,dst=/tmp/kernel-rpms \
-    chmod +x /tmp/build.sh && /tmp/build.sh
+RUN chmod +x /tmp/build.sh && /tmp/build.sh
+
+COPY --from=${AKMODS_URL} / /tmp/akmods-nvidia
+RUN find /tmp/akmods-nvidia
+## optionally install remove old and install new kernel
+# dnf -y remove --no-autoremove kernel kernel-core kernel-modules kernel-modules-core kernel-modules-extra
+## install ublue support package and desired kmod(s)
+RUN dnf install /tmp/rpms/ublue-os/ublue-os-nvidia*.rpm
+RUN dnf install /tmp/rpms/kmods/kmod-nvidia*.rpm
 
 RUN mkdir -p /nix
 
