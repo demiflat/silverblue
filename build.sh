@@ -20,7 +20,7 @@ if [[ -n "$repos" ]]; then
     echo "---"
 fi
 
-rpm-ostree install dnf5 dnf5-plugins
+rpm-ostree install dnf5 dnf5-plugins bootc
 
 echo "-- Installing RPMs defined in recipe.yml --"
 rpm_packages=$(yq '.rpms[]' < /usr/etc/ublue-recipe.yml)
