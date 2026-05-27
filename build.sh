@@ -33,7 +33,7 @@ echo "---"
 dnf5 remove -y fedora-flathub-remote
 mkdir -p /etc/flatpak/remotes.d/
 curl --retry 3 -Lo /etc/flatpak/remotes.d/flathub.flatpakrepo https://dl.flathub.org/repo/flathub.flatpakrepo
-mv -f /usr/lib/systemd/system/flatpak-add-flathub-repos.service /usr/lib/systemd/system/flatpak-add-fedora-repos.service
+# mv -f /usr/lib/systemd/system/flatpak-add-flathub-repos.service /usr/lib/systemd/system/flatpak-add-fedora-repos.service
 
 # # install yafti to install flatpaks on first boot, https://github.com/ublue-os/yafti
 # pip install --prefix=/usr yafti
