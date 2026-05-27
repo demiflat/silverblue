@@ -1,7 +1,10 @@
 ARG IMAGE_URL=ghcr.io/ublue-os/bluefin:stable
+ARG IMAGE_REGISTRY=ghcr.io/ublue-os
 
 FROM ${IMAGE_URL}
 ARG RECIPE=recipe.yml
+
+FROM ${IMAGE_REGISTRY}/akmods:main-${FEDORA_MAJOR_VERSION}${AKMODS_DIGEST:+@${AKMODS_DIGEST}} AS akmods
 
 # copy over configuration files
 # etc is copied to /usr/etc/ to prevent "merge conflicts"
