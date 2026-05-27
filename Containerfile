@@ -33,8 +33,7 @@ RUN find /tmp/akmods-nvidia
 ## optionally install remove old and install new kernel
 # dnf -y remove --no-autoremove kernel kernel-core kernel-modules kernel-modules-core kernel-modules-extra
 ## install ublue support package and desired kmod(s)
-RUN dnf install /tmp/rpms/ublue-os/ublue-os-nvidia*.rpm
-RUN dnf install /tmp/rpms/kmods/kmod-nvidia*.rpm
+RUN dnf install /tmp/akmods-nvidia/*.rpm
 
 RUN mkdir -p /nix
 
